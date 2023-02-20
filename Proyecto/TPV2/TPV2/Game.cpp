@@ -15,7 +15,7 @@ Game::Game() {
 	// We now create the textures
 	for (uint i = 0; i < NUM_TEXTURES; i++) {
 		const TextureDescription& desc = TEXT_DESCRIPT[i];
-		textures[i] = new Texture(renderer, "C:/Users/PC/Documents/GitHub/PaceveXCisco/resources/images/" + desc.filename);
+		textures[i] = new Texture(renderer, "../../../resources/images/" + desc.filename);
 	}
 	stateMachine = new GameStateMachine();
 	stateMachine->pushState(new MainMenuState(this));
@@ -45,7 +45,6 @@ void Game::run() {
 		}
 		render();
 	}
-
 }
 void Game::render()
 {
@@ -88,11 +87,9 @@ void Game::setExit() {
 
 void Game::playFunction(Game* game) {
 	delete game->stateMachine->currentState();
-	game->stateMachine->changeState(new PlayState(game, false));
+	game->stateMachine->changeState(new PlayState(game));
 }
-void Game::loadFunction(Game* game) {
-	game->stateMachine->changeState(new PlayState(game, true));
-}
+
 void Game::exitFunction(Game* game) {
 	game->setExit();
 }

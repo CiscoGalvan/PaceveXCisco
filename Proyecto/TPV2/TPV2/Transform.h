@@ -9,9 +9,7 @@ private:
     Vector2D position, velocity;
     float width, height, rotation_;
 public:
-    Transform() {
-        //cout << "fdgbxc";
-    }
+    Transform() {}
     // Constructora
     Transform(Vector2D pos, Vector2D vel, float w, float h, float r) : Component() {
         position = pos;
@@ -19,7 +17,6 @@ public:
         width = w;
         height = h;
         rotation_ = r;
-
     }
 
     // Destructora
@@ -43,9 +40,7 @@ public:
 
     inline void setPos(Vector2D Position) { position = Position; }
 
-
-
-
+    inline void setVel(Vector2D Vel) { velocity = Vel; }
 };
 #endif
 

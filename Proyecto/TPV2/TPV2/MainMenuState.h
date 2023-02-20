@@ -1,7 +1,7 @@
 #pragma once
-#include "GameState.h"
+#include "Manager.h"
 class Game;
-class MainMenuState :public GameState
+class MainMenuState :public Manager
 {
 private:
 	Game* game;

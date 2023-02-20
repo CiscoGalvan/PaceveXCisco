@@ -55,7 +55,6 @@ public:
 	SDL_Renderer* getRenderer();
 	void setExit();
 	static void playFunction(Game* game);
-	static void loadFunction(Game* game);
 	static void exitFunction(Game* game);
 	static void pauseFunction(Game* game);
 	static void returnToGame(Game* game);

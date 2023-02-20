@@ -1,5 +1,6 @@
 #pragma once
 class Entity;
+class Manager;
 
 class Component
 {

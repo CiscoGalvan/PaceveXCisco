@@ -16,7 +16,6 @@ private:
 	array<Component*, maxComponentId> cmps_;
 public:
 	Entity() :cmps_(), currCmps_(), alive_() {
-
 		currCmps_.reserve(maxComponentId);
 	}
 

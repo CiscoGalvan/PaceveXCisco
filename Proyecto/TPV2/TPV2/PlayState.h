@@ -1,15 +1,15 @@
 #pragma once
-#include "GameState.h"
-
+#include "Manager.h"
+#include "Fighter.h"
 class Game;
-class PlayState : public GameState
+class PlayState : public Manager
 {
 private:
 	bool gameover = false, win = false, nextLevelBool = false; // control booleans
 	Game* game;
 
 public:
-	PlayState(Game* game1, bool load);
+	PlayState(Game* game1);
 	~PlayState();
 	virtual void render();
 	virtual void handleEvents();

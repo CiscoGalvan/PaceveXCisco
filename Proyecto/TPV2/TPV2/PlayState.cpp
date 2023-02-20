@@ -1,28 +1,31 @@
 #include "PlayState.h"
 #include "Game.h"
 
-PlayState::PlayState(Game* game1, bool load) {
+PlayState::PlayState(Game* game1) {
 	game = game1;
 	// We finally create the game objects 
-
 	// We add all the objects to the GameObjects list
-	if (!entities.empty())
+	if (!ents_.empty())
 	{
-		entities.clear();
+		ents_.clear();
 	}
+
+	addEntity(new Fighter(game));
+	
+	
 }
 PlayState::~PlayState() {
 
 }
 void PlayState::update() {
-	for (auto it : entities)
+	for (auto it : ents_)
 	{
 		it->update();
 	}
 }
 void PlayState::render() {
 	SDL_RenderClear(game->getRenderer());
-	for (auto it : entities) {
+	for (auto it : ents_) {
 		it->render();
 	}
 	SDL_RenderPresent(game->getRenderer());

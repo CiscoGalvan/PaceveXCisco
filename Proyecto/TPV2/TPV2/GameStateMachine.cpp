@@ -1,18 +1,18 @@
 #include "GameStateMachine.h"
 
 
-GameState* GameStateMachine::currentState()
+Manager* GameStateMachine::currentState()
 {
 	return stackStates.top();
 }
 
-void GameStateMachine::changeState(GameState* state)
+void GameStateMachine::changeState(Manager* state)
 {
 	popState();
 	pushState(state);
 }
 
-void GameStateMachine::pushState(GameState* state)
+void GameStateMachine::pushState(Manager* state)
 {
 	stackStates.push(state);
 }

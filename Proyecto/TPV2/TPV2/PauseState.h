@@ -1,9 +1,8 @@
 #pragma once
-#include "GameState.h"
+#include "Manager.h"
 
 class Game;
-class PauseState :public GameState
-{
+class PauseState :public Manager {
 private:
 	Game* game;
 public:

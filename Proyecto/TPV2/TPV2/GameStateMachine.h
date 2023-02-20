@@ -1,17 +1,17 @@
 #pragma once
-#include "GameState.h"
+#include "Manager.h"
 #include <stack>
 
 
 class GameStateMachine
 {
 private:
-    stack<GameState*> stackStates;
+    stack<Manager*> stackStates;
 public:
     GameStateMachine() {};
-    GameState* currentState();
-    void pushState(GameState* state);
-    void changeState(GameState* state);
+    Manager* currentState();
+    void pushState(Manager* state);
+    void changeState(Manager* state);
     void popState();
     int stackLength();
 };

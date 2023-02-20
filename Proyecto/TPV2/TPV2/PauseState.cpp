@@ -4,7 +4,10 @@ PauseState::PauseState(Game* game) {
 	this->game = game;
 
 	//DEJAR LA LISTA OBJETOS VACIA
-	entities.clear();
+	if (!ents_.empty())
+	{
+		ents_.clear();
+	}
 }
 
 PauseState::~PauseState() {
@@ -13,14 +16,14 @@ PauseState::~PauseState() {
 void PauseState::render()
 {
 	SDL_RenderClear(game->getRenderer());
-	for (auto it : entities) {
+	for (auto it : ents_) {
 		it->render();
 	}
 	SDL_RenderPresent(game->getRenderer());
 }
 void PauseState::update()
 {
-	for (auto it : entities) {
+	for (auto it : ents_) {
 		it->update();
 	}
 }
