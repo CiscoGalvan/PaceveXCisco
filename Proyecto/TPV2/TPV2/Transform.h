@@ -41,6 +41,8 @@ public:
     inline void setPos(Vector2D Position) { position = Position; }
 
     inline void setVel(Vector2D Vel) { velocity = Vel; }
+
+    void update();
 };
 #endif
 

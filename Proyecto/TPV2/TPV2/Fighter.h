@@ -6,6 +6,7 @@
 #include "Transform.h"
 #include "Health.h"
 #include "FighterCtrl.h"
+#include "DeAccelerationComponent.h"
 class Game;
 class Fighter : public Entity {
 private:

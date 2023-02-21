@@ -7,10 +7,11 @@ Fighter::Fighter(Game* game) {
 	addComponent<Image>(IMAGE_H, texture);
 	
 	addComponent<Health>(HEALTH_H, maxLifes,game);
-	ctrl=addComponent<FighterCtrl>(FIGHTERCONTROL_H, game);
+	ctrl = addComponent<FighterCtrl>(FIGHTERCONTROL_H, game);
+	addComponent<DeAccelerationComponent>(DEACCELERATIONCOMPONENT_H);
 
 }
-void Fighter:: handleEvent(SDL_Event event)
+void Fighter::handleEvent(SDL_Event event)
 {
 	ctrl->handleEvent(event);
 }
