@@ -77,5 +77,7 @@ public:
 			currCmps_[i]->render();
 	}
 
+	
+
 };
 

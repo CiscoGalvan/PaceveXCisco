@@ -7,7 +7,7 @@ class PlayState : public Manager
 private:
 	bool gameover = false, win = false, nextLevelBool = false; // control booleans
 	Game* game;
-
+	
 public:
 	PlayState(Game* game1);
 	~PlayState();

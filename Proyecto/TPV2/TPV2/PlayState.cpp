@@ -40,5 +40,7 @@ void PlayState::handleEvents() {
 			game->pauseFunction(game);
 		}
 		if (event.type == SDL_QUIT) game->setExit();
+		static_cast<Fighter*>(*(ents_.begin()))->handleEvent(event);
+		
 	}
 }
