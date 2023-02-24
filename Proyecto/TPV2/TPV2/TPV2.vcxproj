@@ -23,10 +23,10 @@
     <ClInclude Include="DeAccelerationComponent.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="Fighter.h" />
     <ClInclude Include="FighterCtrl.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="Gun.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="MainMenuState.h" />
@@ -58,10 +58,10 @@
     <ClCompile Include="DeAccelerationComponent.cpp" />
     <ClCompile Include="ecs.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="FighterCtrl.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="Gun.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Manager.cpp" />

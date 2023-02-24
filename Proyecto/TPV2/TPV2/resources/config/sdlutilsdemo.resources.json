@@ -7,7 +7,18 @@
   ],
   
   "images" : [
-    { "id" : "sdl_logo", "file" : "resources/images/SDL_logo.png" }
+    {
+      "id": "sdl_logo",
+      "file": "resources/images/SDL_logo.png"
+    },
+    {
+      "id": "fighter",
+      "file": "resources/images/fighter.png"
+    },
+    {
+      "id": "heart",
+      "file": "resources/images/heart.png"
+    }
   ],
   
   "messages" : [
@@ -17,7 +28,14 @@
   
   "sounds" : [
     { "id" : "wall_hit", "file" : "resources/sound/wall_hit.wav" },
-    { "id" : "explosion", "file" : "resources/sound/explosion.wav" }
+    {
+      "id": "explosion",
+      "file": "resources/sound/explosion.wav"
+    },
+    {
+      "id": "thrust",
+      "file": "resources/sound/thrust.wav"
+    }
   ],
 
   "musics" : [

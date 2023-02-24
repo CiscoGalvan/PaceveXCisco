@@ -6,9 +6,8 @@ void FighterCtrl::handleEvent(SDL_Event event)
 
 	if (event.type == SDL_KEYDOWN)
 		if (event.key.keysym.sym == SDLK_UP) {
-			
-			trFighter->setVel(trFighter->getVel()+(Vector2D(0, -1).rotate(trFighter->getR())*acceleration));
-			//SDLUtils::instance()->soundEffects().at("../../../resources/sound/thrust.wav").play();
+			trFighter->setVel(trFighter->getVel() + (Vector2D(0, -1).rotate(trFighter->getR()) * acceleration));
+			SDLUtils::instance()->soundEffects().at("thrust").play();
 		}
 		if (event.key.keysym.sym == SDLK_LEFT) {
 			trFighter->setR(trFighter->getR() - 5.0f);

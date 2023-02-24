@@ -5,7 +5,7 @@ Health::Health(int maxLifes_,Game* game_)
 	maxLives = maxLifes_;
 	lives = maxLifes_;
 	game = game_;
-	texture = game->getTexture(Heart1);
+	texture = &SDLUtils::instance()->images().at("heart");
 }
 
 void Health::render()

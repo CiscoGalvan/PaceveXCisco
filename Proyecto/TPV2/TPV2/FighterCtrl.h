@@ -4,6 +4,7 @@
 #include "Component.h"
 #include "src/sdlutils/InputHandler.h"
 #include "Transform.h"
+#include "src/sdlutils/SDLUtils.h"
 class Game;
 class FighterCtrl : public Component
 {
