@@ -9,6 +9,7 @@ Fighter::Fighter(Game* game) {
 	addComponent<Health>(HEALTH_H, maxLifes,game);
 	ctrl = addComponent<FighterCtrl>(FIGHTERCONTROL_H, game);
 	addComponent<DeAccelerationComponent>(DEACCELERATIONCOMPONENT_H);
+	addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDCE_H);
 
 }
 void Fighter::handleEvent(SDL_Event event)

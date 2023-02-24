@@ -10,6 +10,7 @@ enum cmpId : cmpId_type {
 	IMAGE_H = 2,
 	HEALTH_H =3,
 	FIGHTERCONTROL_H=4,
+	SHOWATOPPOSIDESIDCE_H=5,
 	// do not remove this
 	_LAST_CMP_ID
 };

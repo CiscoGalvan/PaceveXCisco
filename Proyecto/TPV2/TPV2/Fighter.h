@@ -7,6 +7,7 @@
 #include "Health.h"
 #include "FighterCtrl.h"
 #include "DeAccelerationComponent.h"
+#include "ShowAtOpposideSide.h"
 class Game;
 class Fighter : public Entity {
 private:
