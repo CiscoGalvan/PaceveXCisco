@@ -10,11 +10,16 @@ class FighterCtrl : public Component
 private:
 	Game* game;
 	Transform* trFighter;
+	float acceleration = 0.2f;
 
 public:
 	FighterCtrl(Game* game_):game(game_){}
 	void handleEvent(SDL_Event event);
 	void initComponent();
+	void update()
+	{
+		std::cout << trFighter->getR()<<std::endl;
+	}
 };
 
 #endif

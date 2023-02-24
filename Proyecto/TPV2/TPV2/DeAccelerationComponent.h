@@ -7,7 +7,7 @@
 class DeAccelerationComponent : public Component {
 private:
 	Transform* transformShip;
-	float deceleration;
+	float deceleration=0.995f;
 public:
 	DeAccelerationComponent() {}
 	void initComponent();

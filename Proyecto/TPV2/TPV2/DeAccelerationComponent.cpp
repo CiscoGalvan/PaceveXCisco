@@ -1,7 +1,7 @@
 #include "DeAccelerationComponent.h"
 #include "Entity.h"
 void DeAccelerationComponent::update() {
-	if (sqrt(pow(transformShip->getVel().getX(), 2) + pow(transformShip->getVel().getY(), 2)) < 0.05) {
+	if (sqrt(pow(transformShip->getVel().getX(), 2) + pow(transformShip->getVel().getY(), 2)) < 0.005f) {
 		transformShip->setVel(Vector2D(0, 0));
 	}
 	else {
