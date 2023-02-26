@@ -12,12 +12,15 @@ class Entity
 {
 private:
 	bool alive_;
+	Manager* mngr_;
 	vector<Component*> currCmps_;
 	array<Component*, maxComponentId> cmps_;
 public:
-	Entity() :cmps_(), currCmps_(), alive_() {
+	Entity() :mngr_(nullptr), cmps_(), currCmps_(), alive_() {
+
 		currCmps_.reserve(maxComponentId);
 	}
+	inline void setContext(Manager* mngr) { mngr_ = mngr; }
 
 	virtual ~Entity() {
 		for (auto c : currCmps_) {
@@ -39,7 +42,7 @@ public:
 		removeComponent(cId);
 		currCmps_.push_back(c);
 		cmps_[cId] = c;
-		c->setContext(this);
+		c->setContext(this,mngr_);
 		c->initComponent();
 		return c;
 	}

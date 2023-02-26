@@ -29,6 +29,7 @@ void Game::run() {
 		frameTime = SDL_GetTicks() - startTime;
 		if (frameTime >= FRAME_RATE) {
 			update();
+			refresh();
 			startTime = SDL_GetTicks();
 		}
 		render();
@@ -46,6 +47,13 @@ void Game::handleEvent()
 {
 	stateMachine->currentState()->handleEvents();
 }
+
+void Game::refresh()
+{
+	stateMachine->currentState()->refresh();
+}
+
+
 
 //Function to get the windows sizes
 SDL_Rect Game::getWindowRect() {

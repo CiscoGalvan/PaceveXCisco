@@ -3,6 +3,7 @@
 
 PlayState::PlayState(Game* game1) {
 	game = game1;
+	init();
 	// We finally create the game objects 
 	// We add all the objects to the GameObjects list
 	if (!ents_.empty())
@@ -20,8 +21,14 @@ PlayState::PlayState(Game* game1) {
 	fighter->addComponent<Image>(IMAGE_H, texture);
 	fighter->addComponent<Health>(HEALTH_H, maxLifes, game);
 	ctrl = fighter->addComponent<FighterCtrl>(FIGHTERCONTROL_H, game);
+	ctrl->setContext(fighter, this);
 	fighter->addComponent<DeAccelerationComponent>(DEACCELERATIONCOMPONENT_H);
 	fighter->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDCE_H);
+	gn=fighter->addComponent<Gun>(GUN_H);
+	
+	//Si no hacemos el setContext el manager es nulo todo el rato
+	gn->setContext(fighter, this);
+	ctrl->initComponent();
 	addEntity(fighter);
 	
 	
@@ -30,6 +37,8 @@ PlayState::~PlayState() {
 
 }
 void PlayState::update() {
+
+	cout << ents_.size();
 	for (auto it : ents_)
 	{
 		it->update();
@@ -55,3 +64,19 @@ void PlayState::handleEvents() {
 		ctrl->handleEvent(event);
 	}
 }
+
+void PlayState::refresh() 
+{
+	ents_.erase(
+		remove_if(ents_.begin(), ents_.end(), [](Entity* e) {
+			if (e->isAlive()) {
+				return false;
+			}
+			else {
+				delete e;
+				return true;
+			}
+			}),
+		ents_.end());
+}
+

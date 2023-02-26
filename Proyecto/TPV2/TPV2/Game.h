@@ -36,6 +36,7 @@ public:
 	void render();
 	void update();
 	void handleEvent();
+	void refresh();
 	SDL_Renderer* getRenderer();
 	void setExit();
 	static void playFunction(Game* game);

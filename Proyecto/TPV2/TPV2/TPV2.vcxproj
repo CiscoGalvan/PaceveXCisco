@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Component.h" />
     <ClInclude Include="DeAccelerationComponent.h" />
+    <ClInclude Include="DisableOnExit.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FighterCtrl.h" />
@@ -56,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DeAccelerationComponent.cpp" />
+    <ClCompile Include="DisableOnExit.cpp" />
     <ClCompile Include="ecs.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FighterCtrl.cpp" />
