@@ -7,6 +7,8 @@
 #include "DeAccelerationComponent.h"
 #include "Health.h"
 #include "Gun.h"
+#include "FramedImage.h"
+#include "Follow.h"
 class Game;
 class PlayState : public Manager
 {
@@ -14,7 +16,7 @@ private:
 	bool gameover = false, win = false, nextLevelBool = false; // control booleans
 	Game* game;
 	Entity* fighter = nullptr;
-	
+	Entity* asteroid = nullptr;
 
 	FighterCtrl* ctrl = nullptr;
 	Gun* gn=nullptr;

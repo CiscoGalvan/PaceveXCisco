@@ -29,8 +29,24 @@ PlayState::PlayState(Game* game1) {
 	//Si no hacemos el setContext el manager es nulo todo el rato
 	gn->setContext(fighter, this);
 	ctrl->initComponent();
+
 	addEntity(fighter);
+
+
 	
+	asteroid = new Entity();
+	Texture* texture2 = &SDLUtils::instance()->images().at("asteroid");
+	Vector2D posIni2 = new Vector2D((WIN_WIDTH / 2) + 50, WIN_HEIGHT / 2);
+	Vector2D velIni2 = new Vector2D(1, 0);
+	float width2 = 85 , height2 = 100, rotationIni2 = 1;
+	
+	asteroid->addComponent<Transform>(TRANSFORM_H, posIni2, velIni2, width2, height2, rotationIni2);
+	asteroid->addComponent<FramedImage>(FRAMEDIMAGE_H, texture2);
+	asteroid->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDCE_H);
+	asteroid->addComponent<Follow>(FOLLOW_H,fighter);
+
+	addEntity(asteroid);
+
 	
 }
 PlayState::~PlayState() {

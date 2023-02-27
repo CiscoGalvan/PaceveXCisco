@@ -23,6 +23,10 @@
     {
       "id": "fire",
       "file": "resources/images/fire.png"
+    },
+    {
+      "id": "asteroid",
+      "file": "resources/images/asteroid.png"
     }
   ],
   

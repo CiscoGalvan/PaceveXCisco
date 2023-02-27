@@ -13,6 +13,8 @@ enum cmpId : cmpId_type {
 	SHOWATOPPOSIDESIDCE_H = 5,
 	GUN_H = 6,
 	DISABLEONEXIT_H = 7,
+	FRAMEDIMAGE_H = 8,
+	FOLLOW_H = 9,
 	// do not remove this
 	_LAST_CMP_ID
 };

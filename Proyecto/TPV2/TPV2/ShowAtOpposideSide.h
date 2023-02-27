@@ -8,7 +8,7 @@ class ShowAtOpposideSide : public Component
 {
 
 private:
-	Transform* transformShip;
+	Transform* transform;
 public:
 	ShowAtOpposideSide(){}
 	virtual ~ShowAtOpposideSide() {}
