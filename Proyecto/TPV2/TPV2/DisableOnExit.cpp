@@ -8,7 +8,7 @@ void DisableOnExit::initComponent()
 
 void DisableOnExit::update()
 {
-	if (trBullet->getPos().getX()< -trBullet->getW() || trBullet->getPos().getX() > WIN_WIDTH || trBullet->getPos().getY()<0 || trBullet->getPos().getY() > WIN_HEIGHT)
+	if (trBullet->getPos().getX()< -trBullet->getW() || trBullet->getPos().getX() > WIN_WIDTH || trBullet->getPos().getY() < -trBullet->getH() || trBullet->getPos().getY() > WIN_HEIGHT)
 	{
 		ent_->setAlive(false);
 	}

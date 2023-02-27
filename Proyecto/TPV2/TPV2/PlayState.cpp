@@ -20,32 +20,35 @@ PlayState::PlayState(Game* game1) {
 	fighter->addComponent<Transform>(TRANSFORM_H, posIni, velIni, width, height, rotationIni);
 	fighter->addComponent<Image>(IMAGE_H, texture);
 	fighter->addComponent<Health>(HEALTH_H, maxLifes, game);
+	gn = fighter->addComponent<Gun>(GUN_H);
 	ctrl = fighter->addComponent<FighterCtrl>(FIGHTERCONTROL_H, game);
-	ctrl->setContext(fighter, this);
+	//ctrl->setContext(fighter, this);
 	fighter->addComponent<DeAccelerationComponent>(DEACCELERATIONCOMPONENT_H);
 	fighter->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDCE_H);
-	gn=fighter->addComponent<Gun>(GUN_H);
+	
 	
 	//Si no hacemos el setContext el manager es nulo todo el rato
 	gn->setContext(fighter, this);
-	ctrl->initComponent();
+	//ctrl->initComponent();
 
 	addEntity(fighter);
 
 
-	
-	asteroid = new Entity();
-	Texture* texture2 = &SDLUtils::instance()->images().at("asteroid");
-	Vector2D posIni2 = new Vector2D((WIN_WIDTH / 2) + 50, WIN_HEIGHT / 2);
-	Vector2D velIni2 = new Vector2D(1, 0);
-	float width2 = 85 , height2 = 100, rotationIni2 = 1;
-	
-	asteroid->addComponent<Transform>(TRANSFORM_H, posIni2, velIni2, width2, height2, rotationIni2);
-	asteroid->addComponent<FramedImage>(FRAMEDIMAGE_H, texture2);
-	asteroid->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDCE_H);
-	asteroid->addComponent<Follow>(FOLLOW_H,fighter);
+	for (int i = 0; i < 5; i++) {
+		asteroid = new Entity();
+		Texture* texture2 = &SDLUtils::instance()->images().at("asteroid");
+		Vector2D posIni2 = new Vector2D((WIN_WIDTH / 2) + 50, WIN_HEIGHT / 2);
+		Vector2D velIni2 = new Vector2D(1, 0);
+		float width2 = 85, height2 = 100, rotationIni2 = 1;
 
-	addEntity(asteroid);
+		asteroid->addComponent<Transform>(TRANSFORM_H, posIni2, velIni2, width2, height2, rotationIni2);
+		asteroid->addComponent<FramedImage>(FRAMEDIMAGE_H, texture2);
+		asteroid->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDCE_H);
+		asteroid->addComponent<Follow>(FOLLOW_H, fighter);
+
+		addEntity(asteroid);
+	}
+	
 
 	
 }
@@ -77,7 +80,7 @@ void PlayState::handleEvents() {
 			game->pauseFunction(game);
 		}
 		if (event.type == SDL_QUIT) game->setExit();
-		ctrl->handleEvent(event);
+		fighter->handleEvent(event);
 	}
 }
 

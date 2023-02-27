@@ -11,7 +11,7 @@
 class Gun : public Component
 {
 private:
-	float lastShootTime, rotacionBala, widthBala = 29,  heightBala = 66;
+	float lastShootTime, rotacionBala, widthBala = 29,  heightBala = 66, cadence = 250;
 	bool canShoot = true;
 	Transform* trFighter;
 	Texture* texture;

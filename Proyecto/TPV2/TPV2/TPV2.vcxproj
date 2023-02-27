@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AsteroidManager.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DeAccelerationComponent.h" />
     <ClInclude Include="DisableOnExit.h" />
@@ -58,9 +59,9 @@
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AsteroidManager.cpp" />
     <ClCompile Include="DeAccelerationComponent.cpp" />
     <ClCompile Include="DisableOnExit.cpp" />
-    <ClCompile Include="ecs.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FighterCtrl.cpp" />
     <ClCompile Include="Follow.cpp" />

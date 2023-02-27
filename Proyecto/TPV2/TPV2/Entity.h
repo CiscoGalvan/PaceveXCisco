@@ -15,6 +15,7 @@ private:
 	Manager* mngr_;
 	vector<Component*> currCmps_;
 	array<Component*, maxComponentId> cmps_;
+	std::bitset<maxGroupId> groups_;
 public:
 	Entity() :mngr_(nullptr), cmps_(), currCmps_(), alive_() {
 
@@ -80,7 +81,21 @@ public:
 			currCmps_[i]->render();
 	}
 
-	
+	inline void handleEvent(SDL_Event event) {
+		auto n = currCmps_.size();
+		for (auto i = 0u; i < n; i++)
+			currCmps_[i]->handleEvent(event);
+	}
+
+	inline void addToGroup(grpId_type gId) {
+		if (!groups_[gId]) groups_[gId] = true;
+	}
+	inline void removeFromGroup(grpId_type gId) {
+		if (groups_[gId]) groups_[gId] = false;
+	}
+	inline bool hasGroup(grpId_type gId) {
+		return groups_[gId];
+	}
 
 };
 

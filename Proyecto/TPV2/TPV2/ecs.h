@@ -20,5 +20,14 @@ enum cmpId : cmpId_type {
 };
 constexpr cmpId_type maxComponentId = _LAST_CMP_ID;
 
+using grpId_type = uint8_t;
+enum grpId : grpId_type {
+	_grp_ASTEROIDS = 0,
+	_grp_BULLETS = 1,
+	_LAST_GRP_ID
+};
+constexpr grpId_type maxGroupId = _LAST_GRP_ID;
+
+
 #endif // !ECS_H_
 

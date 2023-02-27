@@ -9,7 +9,7 @@ void Gun::initComponent()
 
 void Gun::update()
 {
-	if (lastShootTime + 250 < sdlutils().currRealTime())
+	if (lastShootTime + cadence < sdlutils().currRealTime())
 	{
 		canShoot = true;
 	}

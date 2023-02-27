@@ -14,8 +14,6 @@ void FramedImage::initComponent()
 
 void FramedImage::update()
 {
-	std::cout << "FIL: " << fila << endl;
-	std::cout << "COL: " << col << endl;
 	rect.x = tr->getPos().getX();
 	rect.y = tr->getPos().getY();
 	rect.h = tr->getH() / 5;
