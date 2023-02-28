@@ -1,14 +1,13 @@
 #pragma once
-#include "Manager.h"
+//#include "Manager.h"
 #include "Image.h"
 #include "FighterCtrl.h"
-#include "Transform.h"
-#include "ShowAtOpposideSide.h"
+//#include "Transform.h"
+//#include "ShowAtOpposideSide.h"
 #include "DeAccelerationComponent.h"
 #include "Health.h"
 #include "Gun.h"
-#include "FramedImage.h"
-#include "Follow.h"
+#include "AsteroidManager.h"
 class Game;
 class PlayState : public Manager
 {
@@ -17,7 +16,7 @@ private:
 	Game* game;
 	Entity* fighter = nullptr;
 	Entity* asteroid = nullptr;
-
+	AsteroidManager* astMngr_;
 	FighterCtrl* ctrl = nullptr;
 	Gun* gn=nullptr;
 public:
@@ -27,4 +26,5 @@ public:
 	virtual void handleEvents();
 	virtual void update();
 	virtual void refresh();
+	inline Entity* getFighter() { return fighter; }
 };

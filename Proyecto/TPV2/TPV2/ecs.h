@@ -15,6 +15,7 @@ enum cmpId : cmpId_type {
 	DISABLEONEXIT_H = 7,
 	FRAMEDIMAGE_H = 8,
 	FOLLOW_H = 9,
+	GENERATIONS_H = 10,
 	// do not remove this
 	_LAST_CMP_ID
 };
