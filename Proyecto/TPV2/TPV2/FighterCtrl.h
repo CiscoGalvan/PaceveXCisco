@@ -6,17 +6,16 @@
 #include "Transform.h"
 #include "src/sdlutils/SDLUtils.h"
 #include "Gun.h"
-class Game;
 class FighterCtrl : public Component
 {
 private:
-	Game* game;
 	Transform* trFighter;
 	Gun* gn_;
-	float acceleration = 0.2f;
+	float acceleration = 0.2f, speedLimit = 3.0f;
+	SoundEffect* sound = &SDLUtils::instance()->soundEffects().at("thrust");
 
 public:
-	FighterCtrl(Game* game_): Component(), game(game_){}
+	FighterCtrl();
 	void handleEvent(SDL_Event event);
 	void initComponent();
 	void update()

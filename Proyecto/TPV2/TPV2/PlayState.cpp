@@ -21,10 +21,9 @@ PlayState::PlayState(Game* game1) {
 	fighter->addComponent<Image>(IMAGE_H, texture);
 	fighter->addComponent<Health>(HEALTH_H, maxLifes, game);
 	gn = fighter->addComponent<Gun>(GUN_H);
-	ctrl = fighter->addComponent<FighterCtrl>(FIGHTERCONTROL_H, game);
-	//ctrl->setContext(fighter, this);
+	fighter->addComponent<FighterCtrl>(FIGHTERCONTROL_H);
 	fighter->addComponent<DeAccelerationComponent>(DEACCELERATIONCOMPONENT_H);
-	fighter->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDCE_H);
+	fighter->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDE_H);
 	
 	
 	//Si no hacemos el setContext el manager es nulo todo el rato

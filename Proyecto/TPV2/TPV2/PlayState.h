@@ -17,7 +17,6 @@ private:
 	Entity* fighter = nullptr;
 	Entity* asteroid = nullptr;
 	AsteroidManager* astMngr_;
-	FighterCtrl* ctrl = nullptr;
 	Gun* gn=nullptr;
 public:
 	PlayState(Game* game1);

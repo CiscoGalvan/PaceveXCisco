@@ -1,10 +1,16 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
   AsteroidManager.cpp
-E:\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
-E:\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "Texture &SDLUtils::map_access_wrapper<Texture>::at(std::string)"
-E:\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(192,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-E:\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(11,117): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-E:\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(11,61): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-E:\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(12,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-     Creando biblioteca E:\PaceveXCisco\Proyecto\TPV2\bin\TPV2Debug.lib y objeto E:\PaceveXCisco\Proyecto\TPV2\bin\TPV2Debug.exp
-  TPV2.vcxproj -> E:\PaceveXCisco\Proyecto\TPV2\bin\TPV2Debug.exe
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101: 'e': variable local sin referencia
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "SoundEffect &SDLUtils::map_access_wrapper<SoundEffect>::at(std::string)"
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(194,34): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<SoundEffect>" que se está compilando
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(15,94): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(15,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(18,108): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(18,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(21,88): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(21,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(24,94): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(24,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(28,92): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\TPV2\AsteroidManager.cpp(28,54): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  TPV2.vcxproj -> C:\Users\PC\Documents\GitHub\PaceveXCisco\Proyecto\TPV2\bin\TPV2Debug.exe

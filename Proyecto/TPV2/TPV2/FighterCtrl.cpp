@@ -1,13 +1,23 @@
 #include "FighterCtrl.h"
-#include "Game.h"
+FighterCtrl::FighterCtrl() : Component() {
+	sound->setVolume(50);
+}
+
 void FighterCtrl::handleEvent(SDL_Event event)
 {
 	InputHandler::instance()->update(event);
 
 	
 		if (event.key.keysym.sym == SDLK_UP) {
-			trFighter->setVel(trFighter->getVel() + (Vector2D(0, -1).rotate(trFighter->getR()) * acceleration));
+			if (sqrt(pow(trFighter->getVel().getX(), 2) + pow(trFighter->getVel().getY(), 2)) < speedLimit) {
+				trFighter->setVel(trFighter->getVel() + (Vector2D(0, -1).rotate(trFighter->getR()) * acceleration));
+			}
+			else {
+				trFighter->setVel(trFighter->getVel().normalize() * speedLimit);
+			}
+			cout << trFighter->getVel();
 			//SDLUtils::instance()->soundEffects().at("thrust").play();
+			sound->play();
 		}
 		if (event.key.keysym.sym == SDLK_LEFT) {
 			trFighter->setR(trFighter->getR() - 5.0f);

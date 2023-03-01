@@ -20,7 +20,7 @@ void ShowAtOpposideSide::update()
 	}
 	else if (transform->getPos().getY() - transform->getH() > WIN_HEIGHT)
 	{
-		transform->setPos(Vector2D(transform->getPos().getX(), 0));
+		transform->setPos(Vector2D(transform->getPos().getX(), -transform->getH()));
 	}
 	else if(transform->getPos().getY() + transform->getH() < 0)
 	{
