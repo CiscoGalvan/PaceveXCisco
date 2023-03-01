@@ -1,9 +1,10 @@
 #include "FramedImage.h"
 
-FramedImage::FramedImage(Texture* texture1)
+FramedImage::FramedImage(Texture* texture1, int w, int h) : Component()
 {
-	Component();
 	texture = texture1;
+	widthFrame = w;
+	heightFrame = h;
 	
 }
 
@@ -19,10 +20,10 @@ void FramedImage::update()
 	rect.h = tr->getH() / 5;
 	rect.w = tr->getW() / 6;
 
-	src.x = col * (tr->getW());
-	src.y = fila *(tr->getH());
-	src.h = tr->getH() ;
-	src.w = tr->getW() ;
+	src.x = col * (widthFrame);
+	src.y = fila * (heightFrame);
+	src.h = heightFrame;
+	src.w = widthFrame;
 	
 
 	if (col == 5 && cont>= 2)

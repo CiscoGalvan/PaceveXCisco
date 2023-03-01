@@ -10,19 +10,19 @@ void ShowAtOpposideSide::initComponent()
 
 void ShowAtOpposideSide::update()
 {
-	if (transform->getPos().getX()- transform->getW() >WIN_WIDTH)
+	if (transform->getPos().getX() > WIN_WIDTH) // Rightside
 	{
 		transform->setPos(Vector2D(-transform->getW(), transform->getPos().getY()));
 	}
-	else if(transform->getPos().getX() + transform->getW() < 0)
+	else if (transform->getPos().getX() + transform->getW() < 0) // Leftside
 	{
 		transform->setPos(Vector2D(WIN_WIDTH, transform->getPos().getY()));
 	}
-	else if (transform->getPos().getY() - transform->getH() > WIN_HEIGHT)
+	else if (transform->getPos().getY() > WIN_HEIGHT) // Downside
 	{
 		transform->setPos(Vector2D(transform->getPos().getX(), -transform->getH()));
 	}
-	else if(transform->getPos().getY() + transform->getH() < 0)
+	else if(transform->getPos().getY() + transform->getH() < 0) // Upside
 	{
 		transform->setPos(Vector2D(transform->getPos().getX(), WIN_HEIGHT));
 	}

@@ -12,10 +12,10 @@ private:
 	Transform* tr;
 	Texture* texture;
 	SDL_Rect rect,src;
-	int fila = 0, col = 0,cont;
+	int fila = 0, col = 0, cont, widthFrame, heightFrame;
 
 public:
-	FramedImage(Texture* texture);
+	FramedImage(Texture* texture, int w, int h);
 	void initComponent();
 	void update();
 	void render();

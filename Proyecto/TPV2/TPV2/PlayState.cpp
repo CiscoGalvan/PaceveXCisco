@@ -48,6 +48,18 @@ void PlayState::update() {
 	{
 		it->update();
 	}
+
+	if (astMngr_->getLastRespawnTime() + astMngr_->getTimeGen() < sdlutils().currRealTime())
+	{
+		astMngr_->setRespawn(true);
+	}
+	if (astMngr_->getRespawn())
+	{
+		astMngr_->setRespawn(false);
+		astMngr_->setLastRespawnTime(sdlutils().currRealTime());
+		astMngr_->addAsteroidFrecuently();
+		astMngr_->onCollision(ents_[5]);
+	}
 }
 void PlayState::render() {
 	SDL_RenderClear(game->getRenderer());

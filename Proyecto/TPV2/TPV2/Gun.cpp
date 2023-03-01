@@ -29,6 +29,7 @@ void Gun::createBullet()
 	bullet->addComponent<Transform>(TRANSFORM_H, posBala, velBala, widthBala, heightBala, rotacionBala);
 	bullet->addComponent<Image>(IMAGE_H, texture);
 	bullet->addComponent<DisableOnExit>(DISABLEONEXIT_H);
+	bullet->addToGroup(_grp_BULLETS);
 	mngr_->addEntity(bullet);
 }
 void Gun::shoot()
