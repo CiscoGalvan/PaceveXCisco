@@ -15,8 +15,6 @@ void FighterCtrl::handleEvent(SDL_Event event)
 			else {
 				trFighter->setVel(trFighter->getVel().normalize() * speedLimit);
 			}
-			cout << trFighter->getVel();
-			//SDLUtils::instance()->soundEffects().at("thrust").play();
 			sound->play();
 		}
 		if (event.key.keysym.sym == SDLK_LEFT) {

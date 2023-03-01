@@ -1,5 +1,4 @@
 #pragma once
-#include "src/sdlutils/SDLNetUtils.h"
 #include "src/sdlutils/Texture.h"
 #include "Entity.h"
 #include "FramedImage.h"
@@ -15,7 +14,7 @@ class AsteroidManager
 private:
 	Manager* mngr_;
 	int nAsteroids = 0, timeGen = 5000;
-	float lastRespawnTime;
+	float lastRespawnTime = 0;
 	bool respawn = false;
 	Entity* asteroid;
 public:

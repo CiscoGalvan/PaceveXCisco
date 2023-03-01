@@ -69,19 +69,25 @@ void AsteroidManager::destroyAllAsteroids() {
 
 void AsteroidManager::onCollision(Entity* ent) {
 	int gen = ent->getComponent<Generations>(GENERATIONS_H)->getGenerations();
-	if (gen > 1) {
+	if (gen > 1 && mngr_->getEntities().size() < 29) {
 		for (int i = 0; i < 2; i++) {
 			Transform* tr = ent->getComponent<Transform>(TRANSFORM_H);
-			auto r = sdlutils().rand().nextInt(0, 360);
-			auto pos = tr->getPos() + tr->getVel().rotate(r) * 2 * max(tr->getW(), tr->getH());
-			auto vel = tr->getVel().rotate(r) * 1.1f;
 
 			asteroid = new Entity();
-
 			int newGen = gen - 1;
 			asteroid->addComponent<Generations>(GENERATIONS_H, newGen);
 
 			int newWidth = (tr->getW() / gen) * newGen, newHeight = (tr->getH() / gen) * newGen;
+
+			auto r = sdlutils().rand().nextInt(0, 360);
+			auto pos = tr->getPos(); //+ tr->getVel().rotate(r) * 2 * max(newWidth, newHeight);
+			auto vel = tr->getVel().rotate(r) * 1.1f;
+
+
+
+			
+
+			
 			asteroid->addComponent<Transform>(TRANSFORM_H, pos, vel, newWidth, newHeight, r);
 
 			asteroid->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDE_H);

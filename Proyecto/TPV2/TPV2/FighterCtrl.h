@@ -18,10 +18,6 @@ public:
 	FighterCtrl();
 	void handleEvent(SDL_Event event);
 	void initComponent();
-	void update()
-	{
-		/*std::cout << trFighter->getR()<<std::endl;*/
-	}
 };
 
 #endif

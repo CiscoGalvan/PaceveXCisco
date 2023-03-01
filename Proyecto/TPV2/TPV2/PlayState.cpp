@@ -35,20 +35,13 @@ PlayState::PlayState(Game* game1) {
 	astMngr_ = new AsteroidManager(this);
 	astMngr_->createAsteroids(10);
 	
-
+	colMnrg_ = new CollisionManager(this, astMngr_);
 	
 }
 PlayState::~PlayState() {
 
 }
 void PlayState::update() {
-
-	//cout << ents_.size();
-	for (auto it : ents_)
-	{
-		it->update();
-	}
-
 	if (astMngr_->getLastRespawnTime() + astMngr_->getTimeGen() < sdlutils().currRealTime())
 	{
 		astMngr_->setRespawn(true);
@@ -58,8 +51,24 @@ void PlayState::update() {
 		astMngr_->setRespawn(false);
 		astMngr_->setLastRespawnTime(sdlutils().currRealTime());
 		astMngr_->addAsteroidFrecuently();
-		astMngr_->onCollision(ents_[5]);
 	}
+
+	for (auto it : ents_)
+	{
+		for (auto it2 : ents_)
+		{
+			if ((it->hasComponent(FIGHTERCONTROL_H) || it->hasComponent(DISABLEONEXIT_H)) && it2->hasComponent(FOLLOW_H)) {
+
+				colMnrg_->checkCollision(it2, it);
+			}
+		}
+		it->update();
+	}
+
+
+	
+
+	
 }
 void PlayState::render() {
 	SDL_RenderClear(game->getRenderer());

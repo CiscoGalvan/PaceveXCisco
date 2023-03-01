@@ -8,6 +8,7 @@
 #include "Health.h"
 #include "Gun.h"
 #include "AsteroidManager.h"
+#include "CollisionManager.h"
 class Game;
 class PlayState : public Manager
 {
@@ -17,6 +18,7 @@ private:
 	Entity* fighter = nullptr;
 	Entity* asteroid = nullptr;
 	AsteroidManager* astMngr_;
+	CollisionManager* colMnrg_;
 	Gun* gn=nullptr;
 public:
 	PlayState(Game* game1);
@@ -26,4 +28,9 @@ public:
 	virtual void update();
 	virtual void refresh();
 	inline Entity* getFighter() { return fighter; }
+
+	inline bool getGameover() { return gameover; }
+	inline void setGameover(bool newValue) { gameover = newValue; }
+
+	inline Game* getGame() { return game; }
 };
