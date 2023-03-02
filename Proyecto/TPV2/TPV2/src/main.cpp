@@ -4,7 +4,7 @@
 
 #include "sdlutils/sdlutils_demo.h"
 #include <stdio.h>
-#include "../Game.h"
+#include "game/Game.h"
 
 
 using namespace std;

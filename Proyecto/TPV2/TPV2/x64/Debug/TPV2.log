@@ -4,4 +4,7 @@ E:\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(50,32): warning C4101
 E:\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(47,1): message : al compilar la función del miembro clase plantilla "SoundEffect &SDLUtils::map_access_wrapper<SoundEffect>::at(std::string)"
 E:\PaceveXCisco\Proyecto\TPV2\TPV2\src\sdlutils\SDLUtils.h(194,34): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<SoundEffect>" que se está compilando
      Creando biblioteca E:\PaceveXCisco\Proyecto\TPV2\bin\TPV2Debug.lib y objeto E:\PaceveXCisco\Proyecto\TPV2\bin\TPV2Debug.exp
-  TPV2.vcxproj -> E:\PaceveXCisco\Proyecto\TPV2\bin\TPV2Debug.exe
+main.obj : error LNK2019: símbolo externo "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ) sin resolver al que se hace referencia en la función SDL_main
+main.obj : error LNK2019: símbolo externo "public: __cdecl Game::~Game(void)" (??1Game@@QEAA@XZ) sin resolver al que se hace referencia en la función "public: void * __cdecl Game::`scalar deleting destructor'(unsigned int)" (??_GGame@@QEAAPEAXI@Z)
+main.obj : error LNK2019: símbolo externo "public: void __cdecl Game::run(void)" (?run@Game@@QEAAXXZ) sin resolver al que se hace referencia en la función SDL_main
+E:\PaceveXCisco\Proyecto\TPV2\bin\TPV2Debug.exe : fatal error LNK1120: 3 externos sin resolver
