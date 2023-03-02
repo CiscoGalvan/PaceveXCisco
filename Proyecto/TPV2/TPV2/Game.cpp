@@ -10,12 +10,7 @@ Game::Game() {
 	stateMachine->pushState(new MainMenuState(this));
 }
 Game::~Game() {
-	for (int i = 0; i < stateMachine->stackLength(); i++)
-	{
-		delete stateMachine->currentState();
-		stateMachine->popState();
-	}
-	delete stateMachine;
+	stateMachine->~GameStateMachine();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -34,6 +29,7 @@ void Game::run() {
 		}
 		render();
 	}
+
 }
 void Game::render()
 {
@@ -78,7 +74,7 @@ void Game::setExit() {
 }
 
 void Game::playFunction(Game* game) {
-	delete game->stateMachine->currentState();
+	/*delete game->stateMachine->currentState();*/
 	game->stateMachine->changeState(new PlayState(game));
 }
 
@@ -92,11 +88,11 @@ void Game::pauseFunction(Game* game)
 }
 void Game::returnToGame(Game* game)
 {
-	delete game->stateMachine->currentState();
+	//delete game->stateMachine->currentState();
 	game->stateMachine->popState();
 }
 void Game::returnToMainMenu(Game* game)
 {
-	delete game->stateMachine->currentState();
+	/*delete game->stateMachine->currentState();*/
 	game->stateMachine->changeState(new MainMenuState(game));
 }

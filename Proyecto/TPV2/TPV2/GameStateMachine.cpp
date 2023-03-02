@@ -1,4 +1,9 @@
 #include "GameStateMachine.h"
+GameStateMachine::~GameStateMachine() // destructora
+{
+	clearState();
+	clearState();
+}
 
 
 Manager* GameStateMachine::currentState()
@@ -8,8 +13,20 @@ Manager* GameStateMachine::currentState()
 
 void GameStateMachine::changeState(Manager* state)
 {
-	popState();
-	pushState(state);
+	
+		popState();
+		pushState(state);
+	
+	
+}
+void GameStateMachine::clearState()
+{
+
+	while (!stackToDelete.empty())
+	{
+		delete(stackToDelete.top());
+		stackToDelete.pop();
+	}
 }
 
 void GameStateMachine::pushState(Manager* state)
@@ -19,7 +36,11 @@ void GameStateMachine::pushState(Manager* state)
 
 void GameStateMachine::popState()
 {
-	stackStates.pop();
+	if (!stackStates.empty())
+	{
+		stackToDelete.push(stackStates.top());
+		stackStates.pop();
+	}
 }
 
 int GameStateMachine::stackLength() {

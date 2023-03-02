@@ -16,11 +16,14 @@ void CollisionManager::checkCollision(Entity* ast, Entity* ent) {
 			if (health->getLifes() > 1) {
 				health->quitLife();
 				astMnrg_->createAsteroids(10);
+				static_cast<PlayState*>(mngr_)->setNumAst(10);
+				static_cast<PlayState*>(mngr_)->setGameover(true);
 				entTr->setPos(Vector2D(WIN_WIDTH / 2 - entTr->getW() / 2, WIN_HEIGHT / 2 - entTr->getH() / 2));
 				entTr->setVel(Vector2D(0, 0));
 				entTr->setR(0);
 			}
 			else {
+				static_cast<PlayState*>(mngr_)->setGameover(true);
 				static_cast<PlayState*>(mngr_)->getGame()->returnToMainMenu(static_cast<PlayState*>(mngr_)->getGame());
 			}
 		}

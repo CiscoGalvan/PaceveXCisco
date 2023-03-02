@@ -9,6 +9,7 @@
 #include "Gun.h"
 #include "AsteroidManager.h"
 #include "CollisionManager.h"
+#include "src/sdlutils/Font.h"
 class Game;
 class PlayState : public Manager
 {
@@ -17,9 +18,11 @@ private:
 	Game* game;
 	Entity* fighter = nullptr;
 	Entity* asteroid = nullptr;
+	int numAst = 0;
 	AsteroidManager* astMngr_;
 	CollisionManager* colMnrg_;
 	Gun* gn=nullptr;
+	Font* font = nullptr;
 public:
 	PlayState(Game* game1);
 	~PlayState();
@@ -32,5 +35,12 @@ public:
 	inline bool getGameover() { return gameover; }
 	inline void setGameover(bool newValue) { gameover = newValue; }
 
+	inline void setNumAst(int newNum) { numAst = newNum; }
+	inline int getNumAst() { return numAst; }
+
+
+
 	inline Game* getGame() { return game; }
+	void Win();
+	virtual string getStateID() { return "PLAY"; };
 };

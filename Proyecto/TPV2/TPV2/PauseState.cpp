@@ -31,7 +31,11 @@ void PauseState::update()
 void PauseState::handleEvents() {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_QUIT || event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) game->setExit();
+		if (event.type == SDL_QUIT || event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) game->exitFunction(game);
+		if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
+		{
+			game->returnToGame(game);
+		}
 	}
 
 }

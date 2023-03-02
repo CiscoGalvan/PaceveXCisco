@@ -11,6 +11,8 @@ void AsteroidManager::createAsteroids(int n)
 		int gen = sdlutils().rand().nextInt(1, 4);
 		asteroid->addComponent<Generations>(GENERATIONS_H, gen);
 
+
+		static_cast<PlayState*>(mngr_)->setNumAst(static_cast<PlayState*>(mngr_)->getNumAst() + 1);
 		
 		int positionProb = sdlutils().rand().nextInt(0, 4);
 		Vector2D posIni;
@@ -64,6 +66,9 @@ void AsteroidManager::destroyAllAsteroids() {
 			e->setAlive(false);
 		}
 	}
+
+
+	static_cast<PlayState*>(mngr_)->setNumAst(0);
 }
 
 
@@ -73,6 +78,7 @@ void AsteroidManager::onCollision(Entity* ent) {
 		for (int i = 0; i < 2; i++) {
 			Transform* tr = ent->getComponent<Transform>(TRANSFORM_H);
 
+			static_cast<PlayState*>(mngr_)->setNumAst(static_cast<PlayState*>(mngr_)->getNumAst() + 1);
 			asteroid = new Entity();
 			int newGen = gen - 1;
 			asteroid->addComponent<Generations>(GENERATIONS_H, newGen);
@@ -104,5 +110,8 @@ void AsteroidManager::onCollision(Entity* ent) {
 			mngr_->addEntity(asteroid);
 		}
 	}
+
+
+	static_cast<PlayState*>(mngr_)->setNumAst(static_cast<PlayState*>(mngr_)->getNumAst() - 1);
 	ent->setAlive(false);
 }

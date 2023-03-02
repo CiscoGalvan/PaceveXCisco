@@ -8,6 +8,7 @@ MainMenuState::MainMenuState(Game* game) {
 	{
 		ents_.clear();
 	}
+	font = &SDLUtils::instance()->fonts().at("ARIAL16");
 }
 MainMenuState::~MainMenuState() {
 
@@ -18,6 +19,7 @@ void MainMenuState::render()
 	for (auto it : ents_) {
 		it->render();
 	}
+	font->render(SDLUtils::instance()->renderer(), "PRESS SPACE TO CONTINUE", (WIN_WIDTH / 2) - 100, WIN_HEIGHT / 2, s);
 	SDL_RenderPresent(game->getRenderer());
 }
 void MainMenuState::update()

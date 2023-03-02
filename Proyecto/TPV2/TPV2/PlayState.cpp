@@ -11,13 +11,15 @@ PlayState::PlayState(Game* game1) {
 		ents_.clear();
 	}
 
+	font = &SDLUtils::instance()->fonts().at("ARIAL16");
+
 	fighter = new Entity();
 	Texture* texture = &SDLUtils::instance()->images().at("fighter");
 	
 	Vector2D velIni = new Vector2D(0, 0);
 	float width = 44, height = 38.5, rotationIni = 1;
 	Vector2D posIni = new Vector2D(WIN_WIDTH / 2 - width / 2, WIN_HEIGHT / 2 - height / 2);
-	int maxLifes = 5;
+	int maxLifes = 2;
 	fighter->addComponent<Transform>(TRANSFORM_H, posIni, velIni, width, height, rotationIni);
 	fighter->addComponent<Image>(IMAGE_H, texture);
 	fighter->addComponent<Health>(HEALTH_H, maxLifes, game);
@@ -34,7 +36,7 @@ PlayState::PlayState(Game* game1) {
 	addEntity(fighter);
 
 	astMngr_ = new AsteroidManager(this);
-	astMngr_->createAsteroids(10);
+	astMngr_->createAsteroids(1);
 	
 	colMnrg_ = new CollisionManager(this, astMngr_);
 	
@@ -43,30 +45,41 @@ PlayState::~PlayState() {
 
 }
 void PlayState::update() {
-	if (astMngr_->getLastRespawnTime() + astMngr_->getTimeGen() < sdlutils().currRealTime())
+	if (!gameover)
 	{
-		astMngr_->setRespawn(true);
-	}
-	if (astMngr_->getRespawn())
-	{
-		astMngr_->setRespawn(false);
-		astMngr_->setLastRespawnTime(sdlutils().currRealTime());
-		astMngr_->addAsteroidFrecuently();
-	}
-
-	for (auto it : ents_)
-	{
-		for (auto it2 : ents_)
+		cout << numAst<<endl;
+		if (astMngr_->getLastRespawnTime() + astMngr_->getTimeGen() < sdlutils().currRealTime())
 		{
-			if ((it->hasComponent(FIGHTERCONTROL_H) || it->hasGroup(_grp_BULLETS)) && it2->hasGroup(_grp_ASTEROIDS)) {
-
-				colMnrg_->checkCollision(it2, it);
-			}
+			astMngr_->setRespawn(true);
 		}
-		it->update();
+		if (astMngr_->getRespawn())
+		{
+			astMngr_->setRespawn(false);
+			astMngr_->setLastRespawnTime(sdlutils().currRealTime());
+			//astMngr_->addAsteroidFrecuently();
+		}
+
+		for (auto it : ents_)
+		{
+			if (!ents_.empty())
+			{
+				it->update();
+				for (auto it2 : ents_)
+				{
+					if (!ents_.empty())
+					{
+						if ((it->hasComponent(FIGHTERCONTROL_H) || it->hasGroup(_grp_BULLETS)) && it2->hasGroup(_grp_ASTEROIDS)) {
+
+							colMnrg_->checkCollision(it2, it);
+						}
+					}
+					
+				}
+
+			}	
+		}
+		Win();
 	}
-
-
 	
 
 	
@@ -76,19 +89,40 @@ void PlayState::render() {
 	for (auto it : ents_) {
 		it->render();
 	}
+
+
+	if (gameover)
+	{
+		SDL_Color s = { 255,0,0 };
+		font->render(SDLUtils::instance()->renderer(), "PRESS SPACE TO CONTINUE", WIN_WIDTH / 2, WIN_HEIGHT / 2,s);
+	}
+
 	SDL_RenderPresent(game->getRenderer());
 }
+
+
 
 //Function that handle the events
 void PlayState::handleEvents() {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
+
+		if (!gameover)
 		{
-			game->pauseFunction(game);
+			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
+			{
+				game->pauseFunction(game);
+			}
+			if (event.type == SDL_QUIT) game->setExit();
+			fighter->handleEvent(event);
 		}
-		if (event.type == SDL_QUIT) game->setExit();
-		fighter->handleEvent(event);
+		
+		if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
+		{
+			gameover = false;
+			
+		}
+	
 	}
 }
 
@@ -107,3 +141,14 @@ void PlayState::refresh()
 		ents_.end());
 }
 
+void PlayState::Win()
+{
+	if (numAst == 0)
+	{
+		SDL_Color s = { 255,0,0 };
+		font->render(SDLUtils::instance()->renderer(), "YOUR WIN!", (WIN_WIDTH / 2), (WIN_HEIGHT / 2) + 100, s);
+		SDL_RenderPresent(game->getRenderer());
+		SDL_Delay(5000);
+		game->returnToMainMenu(game);
+	}
+}
