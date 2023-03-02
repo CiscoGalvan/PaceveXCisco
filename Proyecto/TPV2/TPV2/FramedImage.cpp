@@ -17,8 +17,8 @@ void FramedImage::update()
 {
 	rect.x = tr->getPos().getX();
 	rect.y = tr->getPos().getY();
-	rect.h = tr->getH() / 5;
-	rect.w = tr->getW() / 6;
+	rect.h = tr->getH();
+	rect.w = tr->getW();
 
 	src.x = col * (widthFrame);
 	src.y = fila * (heightFrame);

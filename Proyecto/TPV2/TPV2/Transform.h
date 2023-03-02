@@ -3,6 +3,7 @@
 #define TRANSFORM_H_
 #include "src/utils/Vector2D.h"
 #include "Component.h"
+#include "src/sdlutils/SDLUtils.h"
 
 class Transform : public Component {
 private:
@@ -43,6 +44,13 @@ public:
     inline void setVel(Vector2D Vel) { velocity = Vel; }
 
     void update();
+
+    void render() {
+        SDL_Rect rect = build_sdlrect(getPos(), getW(), getH());
+        SDL_SetRenderDrawColor(sdlutils().renderer(), 255, 0, 255, 0);
+        SDL_RenderDrawRect(sdlutils().renderer(), &rect);
+        SDL_SetRenderDrawColor(sdlutils().renderer(), 0, 0, 0, 0);
+    }
 };
 #endif
 

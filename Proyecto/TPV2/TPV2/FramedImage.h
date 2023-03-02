@@ -19,6 +19,8 @@ public:
 	void initComponent();
 	void update();
 	void render();
+
+
 };
 
 #endif

@@ -25,16 +25,14 @@ void Game::run() {
 	uint32_t startTime, frameTime;
 	startTime = SDL_GetTicks();
 	while (!exit) {
-		//if (!static_cast<PlayState*>(stateMachine->currentState())->getGameover()) {
-			handleEvent();
-			frameTime = SDL_GetTicks() - startTime;
-			if (frameTime >= FRAME_RATE) {
-				update();
-				refresh();
-				startTime = SDL_GetTicks();
-			}
-			render();
-		//}
+		handleEvent();
+		frameTime = SDL_GetTicks() - startTime;
+		if (frameTime >= FRAME_RATE) {
+			update();
+			refresh();
+			startTime = SDL_GetTicks();
+		}
+		render();
 	}
 }
 void Game::render()

@@ -13,9 +13,10 @@ PlayState::PlayState(Game* game1) {
 
 	fighter = new Entity();
 	Texture* texture = &SDLUtils::instance()->images().at("fighter");
-	Vector2D posIni = new Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	
 	Vector2D velIni = new Vector2D(0, 0);
-	float width = 88, height = 77, rotationIni = 1;
+	float width = 44, height = 38.5, rotationIni = 1;
+	Vector2D posIni = new Vector2D(WIN_WIDTH / 2 - width / 2, WIN_HEIGHT / 2 - height / 2);
 	int maxLifes = 5;
 	fighter->addComponent<Transform>(TRANSFORM_H, posIni, velIni, width, height, rotationIni);
 	fighter->addComponent<Image>(IMAGE_H, texture);
@@ -57,7 +58,7 @@ void PlayState::update() {
 	{
 		for (auto it2 : ents_)
 		{
-			if ((it->hasComponent(FIGHTERCONTROL_H) || it->hasComponent(DISABLEONEXIT_H)) && it2->hasComponent(FOLLOW_H)) {
+			if ((it->hasComponent(FIGHTERCONTROL_H) || it->hasGroup(_grp_BULLETS)) && it2->hasGroup(_grp_ASTEROIDS)) {
 
 				colMnrg_->checkCollision(it2, it);
 			}

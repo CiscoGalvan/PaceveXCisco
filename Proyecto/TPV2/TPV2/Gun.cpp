@@ -21,7 +21,7 @@ void Gun::createBullet()
 	Entity* bullet = new Entity();
     posBala = trFighter->getPos()
 		+ Vector2D(trFighter->getW() / 2.0f, trFighter->getH() / 2.0f)
-		- Vector2D(0.0f, trFighter->getW() / 2.0f + 5.0f + 12.0f).rotate(trFighter->getR())
+		- Vector2D(0.0f, trFighter->getH() / 2.0f + 5.0f + 12.0f).rotate(trFighter->getR())
 		- Vector2D(2.0f, 10.0f);
     velBala = Vector2D(0.0f, -1.0f).rotate(trFighter->getR()) * (trFighter->getVel().magnitude() + 5.0f);
 	rotacionBala = trFighter->getR();

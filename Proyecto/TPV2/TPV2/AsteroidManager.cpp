@@ -33,7 +33,7 @@ void AsteroidManager::createAsteroids(int n)
 		Vector2D c = h + r;
 		float speed = sdlutils().rand().nextInt(5, 10) / 10.0f;
 		Vector2D velIni = (c - posIni).normalize() * speed;
-		float width = 85 * gen, height = 100 * gen, rotationIni = 1;
+		float width = 17 * gen, height = 20 * gen, rotationIni = 1;
 
 		asteroid->addComponent<Transform>(TRANSFORM_H, posIni, velIni, width, height, rotationIni);
 		
@@ -83,11 +83,6 @@ void AsteroidManager::onCollision(Entity* ent) {
 			auto pos = tr->getPos(); //+ tr->getVel().rotate(r) * 2 * max(newWidth, newHeight);
 			auto vel = tr->getVel().rotate(r) * 1.1f;
 
-
-
-			
-
-			
 			asteroid->addComponent<Transform>(TRANSFORM_H, pos, vel, newWidth, newHeight, r);
 
 			asteroid->addComponent<ShowAtOpposideSide>(SHOWATOPPOSIDESIDE_H);
