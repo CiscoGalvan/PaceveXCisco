@@ -18,28 +18,18 @@ private:
 	Game* game;
 	Entity* fighter = nullptr;
 	Entity* asteroid = nullptr;
-	int numAst = 0;
 	AsteroidManager* astMngr_;
 	CollisionManager* colMnrg_;
+	
 	Gun* gn=nullptr;
 	Font* font = nullptr;
 public:
 	PlayState(Game* game1);
-	~PlayState();
+	virtual ~PlayState();
 	virtual void render();
 	virtual void handleEvents();
 	virtual void update();
-	virtual void refresh();
-	inline Entity* getFighter() { return fighter; }
-
-	inline bool getGameover() { return gameover; }
 	inline void setGameover(bool newValue) { gameover = newValue; }
-
-	inline void setNumAst(int newNum) { numAst = newNum; }
-	inline int getNumAst() { return numAst; }
-
-
-
 	inline Game* getGame() { return game; }
 	void Win();
 	virtual string getStateID() { return "PLAY"; };

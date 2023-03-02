@@ -6,12 +6,16 @@
 #include <stdio.h>
 #include "../Game.h"
 
+
 using namespace std;
 
 using uint = unsigned int;
 
 
 int main(int ac, char **av) {
+
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	try {
 		Game* game = new Game();
 		game->run();
@@ -27,5 +31,5 @@ int main(int ac, char **av) {
 	}
 
 	return 0;
-}
+	}
 

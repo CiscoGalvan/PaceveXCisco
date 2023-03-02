@@ -2,7 +2,12 @@
 GameStateMachine::~GameStateMachine() // destructora
 {
 	clearState();
-	clearState();
+
+	while (!stackStates.empty())
+	{
+		delete(stackStates.top());
+		stackStates.pop();
+	}
 }
 
 
@@ -13,11 +18,8 @@ Manager* GameStateMachine::currentState()
 
 void GameStateMachine::changeState(Manager* state)
 {
-	
-		popState();
-		pushState(state);
-	
-	
+	popState();
+	pushState(state);
 }
 void GameStateMachine::clearState()
 {
@@ -27,6 +29,8 @@ void GameStateMachine::clearState()
 		delete(stackToDelete.top());
 		stackToDelete.pop();
 	}
+
+
 }
 
 void GameStateMachine::pushState(Manager* state)

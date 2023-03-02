@@ -36,7 +36,7 @@ void Gun::shoot()
 {
 	if (canShoot)
 	{
-		//SDLUtils::instance()->soundEffects().at("fire").play();
+		SDLUtils::instance()->soundEffects().at("fire").play();
 		canShoot = false;
 		lastShootTime = sdlutils().currRealTime();
 

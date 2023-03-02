@@ -3,7 +3,7 @@
 #include "Game.h"
 void AsteroidManager::createAsteroids(int n)
 {
-	nAsteroids = n;
+	nAsteroids += n;
 	for (int i = 0; i < n; i++)
 	{
 		asteroid = new Entity();
@@ -12,26 +12,26 @@ void AsteroidManager::createAsteroids(int n)
 		asteroid->addComponent<Generations>(GENERATIONS_H, gen);
 
 
-		static_cast<PlayState*>(mngr_)->setNumAst(static_cast<PlayState*>(mngr_)->getNumAst() + 1);
+	
 		
 		int positionProb = sdlutils().rand().nextInt(0, 4);
 		Vector2D posIni;
 		switch (positionProb) {
 			case 0: // Franja superior
-				posIni = new Vector2D(sdlutils().rand().nextInt(0, WIN_WIDTH), sdlutils().rand().nextInt(0, 100)); 
+				posIni = Vector2D(sdlutils().rand().nextInt(0, WIN_WIDTH), sdlutils().rand().nextInt(0, 100)); 
 				break;
 			case 1: // Franja derecha
-				posIni = new Vector2D(sdlutils().rand().nextInt(WIN_WIDTH - 100, WIN_WIDTH), sdlutils().rand().nextInt(0, WIN_HEIGHT));
+				posIni =  Vector2D(sdlutils().rand().nextInt(WIN_WIDTH - 100, WIN_WIDTH), sdlutils().rand().nextInt(0, WIN_HEIGHT));
 				break;
 			case 2: // Franja izquierda
-				posIni = new Vector2D(sdlutils().rand().nextInt(0, 100), sdlutils().rand().nextInt(0, WIN_HEIGHT));
+				posIni =  Vector2D(sdlutils().rand().nextInt(0, 100), sdlutils().rand().nextInt(0, WIN_HEIGHT));
 				break;
 			case 3: // Franja inferior
-				posIni = new Vector2D(sdlutils().rand().nextInt(0, WIN_WIDTH), sdlutils().rand().nextInt(WIN_HEIGHT - 100, WIN_HEIGHT));
+				posIni =  Vector2D(sdlutils().rand().nextInt(0, WIN_WIDTH), sdlutils().rand().nextInt(WIN_HEIGHT - 100, WIN_HEIGHT));
 				break;
 		}
-		Vector2D h = new Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2);
-		Vector2D r = new Vector2D(sdlutils().rand().nextInt(-100, 101), sdlutils().rand().nextInt(-100, 101));
+		Vector2D h =  Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2);
+		Vector2D r =  Vector2D(sdlutils().rand().nextInt(-100, 101), sdlutils().rand().nextInt(-100, 101));
 		Vector2D c = h + r;
 		float speed = sdlutils().rand().nextInt(5, 10) / 10.0f;
 		Vector2D velIni = (c - posIni).normalize() * speed;
@@ -60,6 +60,11 @@ void AsteroidManager::createAsteroids(int n)
 	}
 }
 
+AsteroidManager::~AsteroidManager()
+{
+	
+}
+
 void AsteroidManager::destroyAllAsteroids() {
 	for (auto& e : mngr_->getEntities()) {
 		if (e->hasGroup(_grp_ASTEROIDS)) {
@@ -68,7 +73,7 @@ void AsteroidManager::destroyAllAsteroids() {
 	}
 
 
-	static_cast<PlayState*>(mngr_)->setNumAst(0);
+	nAsteroids = 0;
 }
 
 
@@ -78,7 +83,7 @@ void AsteroidManager::onCollision(Entity* ent) {
 		for (int i = 0; i < 2; i++) {
 			Transform* tr = ent->getComponent<Transform>(TRANSFORM_H);
 
-			static_cast<PlayState*>(mngr_)->setNumAst(static_cast<PlayState*>(mngr_)->getNumAst() + 1);
+			++nAsteroids;
 			asteroid = new Entity();
 			int newGen = gen - 1;
 			asteroid->addComponent<Generations>(GENERATIONS_H, newGen);
@@ -112,6 +117,6 @@ void AsteroidManager::onCollision(Entity* ent) {
 	}
 
 
-	static_cast<PlayState*>(mngr_)->setNumAst(static_cast<PlayState*>(mngr_)->getNumAst() - 1);
+	--nAsteroids;
 	ent->setAlive(false);
 }

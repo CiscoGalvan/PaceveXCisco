@@ -11,7 +11,7 @@ private:
 
 public:
 	MainMenuState(Game* game);
-	~MainMenuState();
+	virtual ~MainMenuState();
 	virtual void update();
 	virtual void render();
 	virtual void handleEvents();

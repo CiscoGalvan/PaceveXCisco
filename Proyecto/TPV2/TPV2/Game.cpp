@@ -10,7 +10,7 @@ Game::Game() {
 	stateMachine->pushState(new MainMenuState(this));
 }
 Game::~Game() {
-	stateMachine->~GameStateMachine();
+	delete stateMachine;
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -74,11 +74,13 @@ void Game::setExit() {
 }
 
 void Game::playFunction(Game* game) {
-	/*delete game->stateMachine->currentState();*/
+	
 	game->stateMachine->changeState(new PlayState(game));
 }
 
-void Game::exitFunction(Game* game) {
+void Game::exitFunction(Game* game) 
+{
+	game->stateMachine->popState();
 	game->setExit();
 }
 
@@ -88,11 +90,11 @@ void Game::pauseFunction(Game* game)
 }
 void Game::returnToGame(Game* game)
 {
-	//delete game->stateMachine->currentState();
+
 	game->stateMachine->popState();
 }
 void Game::returnToMainMenu(Game* game)
 {
-	/*delete game->stateMachine->currentState();*/
+	
 	game->stateMachine->changeState(new MainMenuState(game));
 }

@@ -19,6 +19,7 @@ private:
 	Entity* asteroid;
 public:
 	AsteroidManager(Manager* manager) : mngr_(manager) {};
+	~AsteroidManager();
 	void createAsteroids(int n);
 	inline void addAsteroidFrecuently() { createAsteroids(1); }
 	inline int getTimeGen() { return timeGen; }
@@ -26,6 +27,11 @@ public:
 	inline void setLastRespawnTime(float newValue) { lastRespawnTime = newValue; }
 	inline bool getRespawn() { return respawn; }
 	inline void setRespawn(bool newValue) { respawn = newValue; }
+
+
+	
+	inline int getNumAst() { return nAsteroids; }	
+	inline void setNumAst(int newAsteroids) { nAsteroids = newAsteroids; }
 
 	void destroyAllAsteroids();
 	void onCollision(Entity* ent);
