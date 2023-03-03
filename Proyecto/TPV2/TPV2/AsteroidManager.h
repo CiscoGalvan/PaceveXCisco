@@ -21,15 +21,13 @@ public:
 	AsteroidManager(Manager* manager) : mngr_(manager) {};
 	~AsteroidManager();
 	void createAsteroids(int n);
-	inline void addAsteroidFrecuently() { createAsteroids(1); }
+	inline void addAsteroidFrecuently() { createAsteroids(1); } // Method to respawn an asteroid while playing
 	inline int getTimeGen() { return timeGen; }
 	inline float getLastRespawnTime() { return lastRespawnTime; }
 	inline void setLastRespawnTime(float newValue) { lastRespawnTime = newValue; }
 	inline bool getRespawn() { return respawn; }
 	inline void setRespawn(bool newValue) { respawn = newValue; }
 
-
-	
 	inline int getNumAst() { return nAsteroids; }	
 	inline void setNumAst(int newAsteroids) { nAsteroids = newAsteroids; }
 

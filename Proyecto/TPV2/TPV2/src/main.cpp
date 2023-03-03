@@ -14,7 +14,7 @@ using uint = unsigned int;
 
 int main(int ac, char **av) {
 
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // To detect trash
 
 	try {
 		Game* game = new Game();

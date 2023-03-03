@@ -1,7 +1,7 @@
 #include "CollisionManager.h"
 #include "PlayState.h"
 #include "Game.h"
-void CollisionManager::checkCollision(Entity* ast, Entity* ent) {
+void CollisionManager::checkCollision(Entity* ast, Entity* ent) { // Method that manage collision asteroid - bullet and asteroid - player
 	Transform* astTr = ast->getComponent<Transform>(TRANSFORM_H);
 	Transform* entTr = ent->getComponent<Transform>(TRANSFORM_H);
 

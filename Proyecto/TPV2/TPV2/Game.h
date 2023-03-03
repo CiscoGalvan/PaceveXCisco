@@ -20,6 +20,8 @@ using uint = unsigned int;
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint FRAME_RATE = 10;
+const uint ASTEROID_WIDTH_FRAME = 85;
+const uint ASTEROID_HEIGHT_FRAME = 100;
 
 class Game {
 private:

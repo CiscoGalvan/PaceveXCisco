@@ -1,35 +1,34 @@
 #include "AsteroidManager.h"
 #include "PlayState.h"
 #include "Game.h"
-void AsteroidManager::createAsteroids(int n)
+void AsteroidManager::createAsteroids(int n) // We create n asteroid in scene
 {
 	nAsteroids += n;
 	for (int i = 0; i < n; i++)
 	{
 		asteroid = new Entity();
 
-		int gen = sdlutils().rand().nextInt(1, 4);
+		int gen = sdlutils().rand().nextInt(1, 4); // Number of generations of the asteoird
 		asteroid->addComponent<Generations>(GENERATIONS_H, gen);
-
-
-	
 		
+		// Code to decide where the asteoird spawn
 		int positionProb = sdlutils().rand().nextInt(0, 4);
 		Vector2D posIni;
 		switch (positionProb) {
-			case 0: // Franja superior
+			case 0: // Upside
 				posIni = Vector2D(sdlutils().rand().nextInt(0, WIN_WIDTH), sdlutils().rand().nextInt(0, 100)); 
 				break;
-			case 1: // Franja derecha
+			case 1: // Rightside
 				posIni =  Vector2D(sdlutils().rand().nextInt(WIN_WIDTH - 100, WIN_WIDTH), sdlutils().rand().nextInt(0, WIN_HEIGHT));
 				break;
-			case 2: // Franja izquierda
+			case 2: // Leftside
 				posIni =  Vector2D(sdlutils().rand().nextInt(0, 100), sdlutils().rand().nextInt(0, WIN_HEIGHT));
 				break;
-			case 3: // Franja inferior
+			case 3: // Downside
 				posIni =  Vector2D(sdlutils().rand().nextInt(0, WIN_WIDTH), sdlutils().rand().nextInt(WIN_HEIGHT - 100, WIN_HEIGHT));
 				break;
 		}
+
 		Vector2D h =  Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 		Vector2D r =  Vector2D(sdlutils().rand().nextInt(-100, 101), sdlutils().rand().nextInt(-100, 101));
 		Vector2D c = h + r;
@@ -51,12 +50,10 @@ void AsteroidManager::createAsteroids(int n)
 			texture2 = &SDLUtils::instance()->images().at("asteroid");
 		}
 
-		int widthFrame = 85, heightFrame = 100;
-		asteroid->addComponent<FramedImage>(FRAMEDIMAGE_H, texture2, widthFrame, heightFrame);
+		asteroid->addComponent<FramedImage>(FRAMEDIMAGE_H, texture2, ASTEROID_WIDTH_FRAME, ASTEROID_HEIGHT_FRAME);
 		asteroid->addToGroup(_grp_ASTEROIDS);
 
-		mngr_->addEntity(asteroid);
-		
+		mngr_->addEntity(asteroid); // We add entity to the scene
 	}
 }
 
@@ -77,7 +74,7 @@ void AsteroidManager::destroyAllAsteroids() {
 }
 
 
-void AsteroidManager::onCollision(Entity* ent) {
+void AsteroidManager::onCollision(Entity* ent) { // Method that manage the collision of the asteroid
 	int gen = ent->getComponent<Generations>(GENERATIONS_H)->getGenerations();
 	if (gen > 1 && mngr_->getEntities().size() < 29) {
 		for (int i = 0; i < 2; i++) {
@@ -115,8 +112,6 @@ void AsteroidManager::onCollision(Entity* ent) {
 			mngr_->addEntity(asteroid);
 		}
 	}
-
-
 	--nAsteroids;
 	ent->setAlive(false);
 }
