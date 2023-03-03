@@ -26,6 +26,7 @@ void FramedImage::update()
 	src.w = widthFrame;
 	
 
+	//This if will be used to change the row to render
 	if (col == 5 && cont>= 2)
 	{
 		col = 0;
@@ -33,6 +34,7 @@ void FramedImage::update()
 	}
 	
 	
+	//We change the col
 	if (cont >= 5)
 	{
 		col++;

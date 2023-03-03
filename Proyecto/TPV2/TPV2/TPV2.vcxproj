@@ -72,7 +72,6 @@
     <ClCompile Include="FramedImage.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
-    <ClCompile Include="Generations.cpp" />
     <ClCompile Include="Gun.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="MainMenuState.cpp" />

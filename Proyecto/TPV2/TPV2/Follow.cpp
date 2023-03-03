@@ -12,8 +12,8 @@ void Follow::initComponent()
 	
 }
 
+//The asteroid will follot the Fighter
 void Follow::update()
 {
 	trAsteroid->setVel(trAsteroid->getVel().rotate(trAsteroid->getVel().angle(trFighter->getPos() - trAsteroid->getPos()) > 0 ? 1.0f : -1.0f));
-	//trAsteroid->setVel(trFighter->getVel().angle(trFighter->getPos()-trAsteroid->getPos()) > 0? 1.0f : -1.0f);
 }

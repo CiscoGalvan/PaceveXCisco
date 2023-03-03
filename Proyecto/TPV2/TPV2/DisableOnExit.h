@@ -8,6 +8,7 @@ class DisableOnExit : public Component
 {
 private:
 	
+	//We get the bullet transform
 	Transform* trBullet;
 public:
 	DisableOnExit() : Component() {};

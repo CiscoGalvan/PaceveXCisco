@@ -8,7 +8,7 @@
 #include "Gun.h"
 class FighterCtrl : public Component
 {
-private:
+private: 
 	Transform* trFighter;
 	Gun* gn_;
 	float acceleration = 0.2f, speedLimit = 3.0f;

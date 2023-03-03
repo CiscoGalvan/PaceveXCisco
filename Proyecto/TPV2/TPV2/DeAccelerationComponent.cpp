@@ -1,13 +1,17 @@
 #include "DeAccelerationComponent.h"
 #include "Entity.h"
 void DeAccelerationComponent::update() {
-	if (sqrt(pow(transformShip->getVel().getX(), 2) + pow(transformShip->getVel().getY(), 2)) < 0.005f) {
+
+	//If the module of the velocity vector is less than a limit
+	//If not it will reduce it´s velocity
+	if (sqrt(pow(transformShip->getVel().getX(), 2) + pow(transformShip->getVel().getY(), 2)) < limit)
+	{
 		transformShip->setVel(Vector2D(0, 0));
 	}
-	else {
+	else
+	{
 		transformShip->setVel(Vector2D(transformShip->getVel().getX() * deceleration, transformShip->getVel().getY() * deceleration));
 	}
-	
 }
 
 void DeAccelerationComponent::render() {
